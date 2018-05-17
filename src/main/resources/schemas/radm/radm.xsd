@@ -7,7 +7,7 @@
     	<xs:complexContent>
 			<xs:extension base="xnat:imageAssessorData">
 				<xs:sequence>
-					<xs:element name="firstorder">
+					<xs:element name="firstorder" minOccurs="0" maxOccurs="1">
 						<xs:complexType>
 							<xs:sequence>
 								<xs:element name="energy" type="xs:double" minOccurs="0" maxOccurs="1">
@@ -111,7 +111,7 @@
 							</xs:sequence>
 						</xs:complexType>
 					</xs:element>
-					<xs:element name="shape">
+					<xs:element name="shape" minOccurs="0" maxOccurs="1">
 						<xs:complexType>
 							<xs:sequence>
 								<xs:element name="volume" type="xs:double" minOccurs="0" maxOccurs="1">
@@ -201,7 +201,7 @@
 							</xs:sequence>
 						</xs:complexType>
 					</xs:element>
-					<xs:element name="glcm">
+					<xs:element name="glcm" minOccurs="0" maxOccurs="1">
 						<xs:complexType>
 							<xs:sequence>
 								<xs:element name="autocorrelation" type="xs:double" minOccurs="0" maxOccurs="1">
@@ -425,7 +425,7 @@
 							</xs:sequence>
 						</xs:complexType>
 					</xs:element>
-					<xs:element name="glrlm">
+					<xs:element name="glrlm" minOccurs="0" maxOccurs="1">
 						<xs:complexType>
 							<xs:sequence>
 								<xs:element name="shortRunEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
@@ -527,7 +527,7 @@
 							</xs:sequence>
 						</xs:complexType>
 					</xs:element>
-					<xs:element name="ngtdm">
+					<xs:element name="ngtdm" minOccurs="0" maxOccurs="1">
 						<xs:complexType>
 							<xs:sequence>
 								<xs:element name="coarseness" type="xs:double" minOccurs="0" maxOccurs="1">
@@ -563,7 +563,7 @@
 							</xs:sequence>
 						</xs:complexType>
 					</xs:element>
-					<xs:element name="gldm">
+					<xs:element name="gldm" minOccurs="0" maxOccurs="1">
 						<xs:complexType>
 							<xs:sequence>
 								<xs:element name="smallDependenceEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
