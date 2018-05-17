@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema targetNamespace="http://nrg.wustl.edu/radm" xmlns:nihSS="http://nrg.wustl.edu/radm" xmlns:xdat="http://nrg.wustl.edu/xdat" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xnat="http://nrg.wustl.edu/xnat" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema targetNamespace="http://nrg.wustl.edu/radm" xmlns:radm="http://nrg.wustl.edu/radm" xmlns:xdat="http://nrg.wustl.edu/xdat" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xnat="http://nrg.wustl.edu/xnat" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:import namespace="http://nrg.wustl.edu/xnat" schemaLocation="../xnat/xnat.xsd"/>
 	<xs:element name="Radiomics" type="radm:radiomics"/>
 
