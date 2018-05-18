@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+$page.setTitle("Radiomics Details")
+$page.setLinkColor($ui.alink)
+$page.setVlinkColor($ui.vlink)
+ ##---------------------------------------- 
+ ## DO NOT MODIFY THIS FILE HERE
+ ##
+ ## TO MODIFY, COPY THIS FILE to src/main/resources/templates/screens/ and modify it there 
+ ##----------------------------------------
+#if ($turbineUtils.GetPassedParameter("popup", $data))
+	#set ($popup = $turbineUtils.GetPassedParameter("popup", data) )
+	#set ($popup = "false")
+#end
+<TABLE width="100%">
+	<TR>
+		<TD>
+			<table width="100%">
+				<TR>
+					<TD align="left" valign="middle">
+						<font face="$ui.sansSerifFonts" size="3"><b>Radiomics Details</b></font>
+					</TD>
+				</TR>
+			</TABLE>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<TABLE width="100%">
+				<TR>
+					<TD valign="top">
+						<TABLE>
+							<TR><TD>imageSession_ID</TD><TD>$!item.getStringProperty("radm:radiomics/imageSession_ID")</TD></TR>
+							<TR><TD>date</TD><TD>$!item.getProperty("radm:radiomics/date")</TD></TR>
+							<TR><TD>time</TD><TD>$!item.getProperty("radm:radiomics/time")</TD></TR>
+							<TR><TD>duration</TD><TD>$!item.getProperty("radm:radiomics/duration")</TD></TR>
+							<TR><TD>delay</TD><TD>$!item.getIntegerProperty("radm:radiomics/delay")</TD></TR>
+							<TR><TD>delay/ref_expt_id</TD><TD>$!item.getStringProperty("radm:radiomics/delay/ref_expt_id")</TD></TR>
+							<TR><TD>note</TD><TD>$!item.getStringProperty("radm:radiomics/note")</TD></TR>
+							<TR><TD>acquisition_site</TD><TD>$!item.getStringProperty("radm:radiomics/acquisition_site")</TD></TR>
+							<TR><TD>ID</TD><TD>$!item.getStringProperty("radm:radiomics/ID")</TD></TR>
+							<TR><TD>project</TD><TD>$!item.getStringProperty("radm:radiomics/project")</TD></TR>
+							<TR><TD>visit_id</TD><TD>$!item.getStringProperty("radm:radiomics/visit_id")</TD></TR>
+							<TR><TD>visit</TD><TD>$!item.getStringProperty("radm:radiomics/visit")</TD></TR>
+							<TR><TD>version</TD><TD>$!item.getIntegerProperty("radm:radiomics/version")</TD></TR>
+							<TR><TD>original</TD><TD>$!item.getStringProperty("radm:radiomics/original")</TD></TR>
+							<TR><TD>protocol</TD><TD>$!item.getStringProperty("radm:radiomics/protocol")</TD></TR>
+							<TR><TD>label</TD><TD>$!item.getStringProperty("radm:radiomics/label")</TD></TR>
+							<TR><TD>firstorder/entropy</TD><TD>$!item.getDoubleProperty("radm:radiomics/firstorder/entropy")</TD></TR>
+							<TR><TD>firstorder/minimum</TD><TD>$!item.getDoubleProperty("radm:radiomics/firstorder/minimum")</TD></TR>
+							<TR><TD>firstorder/maximum</TD><TD>$!item.getDoubleProperty("radm:radiomics/firstorder/maximum")</TD></TR>
+							<TR><TD>firstorder/mean</TD><TD>$!item.getDoubleProperty("radm:radiomics/firstorder/mean")</TD></TR>
+							<TR><TD>firstorder/median</TD><TD>$!item.getDoubleProperty("radm:radiomics/firstorder/median")</TD></TR>
+							<TR><TD>firstorder/standardDeviation</TD><TD>$!item.getDoubleProperty("radm:radiomics/firstorder/standardDeviation")</TD></TR>
+							<TR><TD>shape/volume</TD><TD>$!item.getDoubleProperty("radm:radiomics/shape/volume")</TD></TR>
+							<TR><TD>shape/sphericity</TD><TD>$!item.getDoubleProperty("radm:radiomics/shape/sphericity")</TD></TR>
+							<TR><TD>shape/majorAxis</TD><TD>$!item.getDoubleProperty("radm:radiomics/shape/majorAxis")</TD></TR>
+							<TR><TD>shape/minorAxis</TD><TD>$!item.getDoubleProperty("radm:radiomics/shape/minorAxis")</TD></TR>
+							<TR><TD>shape/elongation</TD><TD>$!item.getDoubleProperty("radm:radiomics/shape/elongation")</TD></TR>
+						</TABLE>
+					</TD>
+					<TD valign="top" align="right">
+						#parse($turbineUtils.getTemplateName("actions",$om.getXSIType(),$project))
+					</TD>
+				</TR>
+			</TABLE>
+		</TD>
+	</TR>
+</TABLE>
