@@ -540,6 +540,92 @@
 							</xs:sequence>
 						</xs:complexType>
 					</xs:element>
+                    <xs:element name="glszm" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="grayLevelNonUniformity" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Gray Level Non-Uniformity (GLN) measures the variability of gray-level intensity values in the image, with a lower value indicating more homogeneity in intensity values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="grayLevelNonUniformityNormalized" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Gray Level Non-Uniformity Normalized (GLNN) measures the variability of gray-level intensity values in the image, with a lower value indicating a greater similarity in intensity values. This is the normalized version of the GLN formula.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="grayLevelVariance" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Gray Level Variance (GLV) measures the variance in gray level intensities for the zones.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="largeAreaEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Large Area Emphasis (LAE) is a measure of the distribution of large area size zones, with a greater value indicative of more larger size zones and more coarse textures.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="largeAreaHighGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Large Area High Gray Level Emphasis (LAHGLE) measures the proportion in the image of the joint distribution of larger size zones with higher gray-level values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="largeAreaLowGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Large Area Low Gray Level Emphasis (LALGLE) measures the proportion in the image of the joint distribution of larger size zones with lower gray-level values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="lowGrayLevelZoneEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Low Gray Level Zone Emphasis (LGLZE) measures the distribution of lower gray-level size zones, with a higher value indicating a greater proportion of lower gray-level values and size zones in the image.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="highGrayLevelZoneEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>High Gray Level Zone Emphasis (HGLZE) measures the distribution of the higher gray-level values, with a higher value indicating a greater proportion of higher gray-level values and size zones in the image.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="sizeZoneNonUniformity" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Size-Zone Non-Uniformity (SZN) measures the variability of size zone volumes in the image, with a lower value indicating more homogeneity in size zone volumes.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="sizeZoneNonUniformityNormalized" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Size-Zone Non-Uniformity Normalized (SZNN) measures the variability of size zone volumes throughout the image, with a lower value indicating more homogeneity among zone size volumes in the image. This is the normalized version of the SZN formula.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="smallAreaEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Small Area Emphasis (SAE) is a measure of the distribution of small size zones, with a greater value indicative of more smaller size zones and more fine textures.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="smallAreaHighGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Small Area High Gray Level Emphasis (SAHGLE) measures the proportion in the image of the joint distribution of smaller size zones with higher gray-level values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="smallAreaLowGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Small Area Low Gray Level Emphasis (SALGLE) measures the proportion in the image of the joint distribution of smaller size zones with lower gray-level values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="zonePercentage" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Zone Percentage (ZP) measures the coarseness of the texture by taking the ratio of number of zones and number of voxels in the ROI.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="zoneVariance" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Zone Variance (ZV) measures the variance in zone size volumes for the zones.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="zoneEntropy" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Zone Entropy (ZE) measures the uncertainty/randomness in the distribution of zone sizes and gray levels. A higher value indicates more heterogeneneity in the texture patterns.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
