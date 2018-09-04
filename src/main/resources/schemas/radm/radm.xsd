@@ -462,7 +462,7 @@
 								</xs:element>
 								<xs:element name="strength" type="xs:double" minOccurs="0" maxOccurs="1">
 									<xs:annotation>
-										<xs:documentation>Strenght is a measure of the primitives in an image. Its value is high when the primitives are easily defined and visible, i.e. an image with slow change in intensity but more large coarse differences in gray level intensities.</xs:documentation>
+										<xs:documentation>Strength is a measure of the primitives in an image. Its value is high when the primitives are easily defined and visible, i.e. an image with slow change in intensity but more large coarse differences in gray level intensities.</xs:documentation>
 									</xs:annotation>
 								</xs:element>
 							</xs:sequence>
