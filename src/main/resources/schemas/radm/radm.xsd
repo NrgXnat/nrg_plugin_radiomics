@@ -7,6 +7,36 @@
         <xs:complexContent>
             <xs:extension base="xnat:imageAssessorData">
                 <xs:sequence>
+                    <xs:element name="generalInfo" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="scanId" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="maskFile" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="filter" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="boundingBox" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="centerOfMassIndex" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="centerOfMass" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="enabledImageTypes" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="generalSettings" minOccurs="0" maxOccurs="1">
+                                    <xs:simpleType>
+                                        <xs:restriction base="xs:string">
+                                            <xs:maxLength value="10000"/>
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="imageHash" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="imageSpacing" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="maskHash" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="numpyVersion" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="pyWaveletVersion" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="simpleITKVersion" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="pyradiomicsVersion" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="volumeNum" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="voxelNum" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
                     <xs:element name="firstorder" minOccurs="0" maxOccurs="1">
                         <xs:complexType>
                             <xs:sequence>
