@@ -1,656 +1,663 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema targetNamespace="http://nrg.wustl.edu/radm" xmlns:radm="http://nrg.wustl.edu/radm" xmlns:xdat="http://nrg.wustl.edu/xdat" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xnat="http://nrg.wustl.edu/xnat" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:import namespace="http://nrg.wustl.edu/xnat" schemaLocation="../xnat/xnat.xsd"/>
-	<xs:element name="Radiomics" type="radm:radiomics"/>
+    <xs:import namespace="http://nrg.wustl.edu/xnat" schemaLocation="../xnat/xnat.xsd"/>
+    <xs:element name="Radiomics" type="radm:radiomics"/>
 
     <xs:complexType name="radiomics">
-    	<xs:complexContent>
-			<xs:extension base="xnat:imageAssessorData">
-				<xs:sequence>
-					<xs:element name="firstorder" minOccurs="0" maxOccurs="1">
-						<xs:complexType>
-							<xs:sequence>
-								<xs:element name="energy" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Energy is a measure of the magnitude of voxel values in an image. A larger values implies a greater sum of the squares of these values.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="totalEnergy" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Total Energy is the value of Energy feature scaled by the volume of the voxel in cubic mm. Not present in IBSI feature definitions.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="entropy" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Entropy specifies the uncertainty/randomness in the image values. It measures the average amount of information required to encode the image values. Defined by IBSI as Intensity Histogram Entropy.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="minimum" type="xs:double" minOccurs="0" maxOccurs="1">
-								</xs:element>
-								<xs:element name="tenPercentile" type="xs:double" minOccurs="0" maxOccurs="1">
-								</xs:element>
-								<xs:element name="ninetyPercentile" type="xs:double" minOccurs="0" maxOccurs="1">
-								</xs:element>
-								<xs:element name="maximum" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>The maximum gray level intensity within the ROI.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="mean" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>The average gray level intensity within the ROI.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="median" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>The median gray level intensity within the ROI.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="interquartileRange" type="xs:double" minOccurs="0" maxOccurs="1">
-								</xs:element>
-								<xs:element name="range" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>The range of gray values in the ROI.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="meanAbsoluteDeviation" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Mean Absolute Deviation is the mean distance of all intensity values from the Mean Value of the image array.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="robustMeanAbsoluteDeviation" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Robust Mean Absolute Deviation is the mean distance of all intensity values from the Mean Value calculated on the subset of image array with gray levels in between, or equal to the 10th and 90th percentile.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="rootMeanSquared" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>RMS is the square-root of the mean of all the squared intensity values. It is another measure of the magnitude of the image values. This feature is volume-confounded, a larger value of c increases the effect of volume-confounding.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="standardDeviation" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Standard Deviation measures the amount of variation or dispersion from the Mean Value.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="skewness" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Skewness measures the asymmetry of the distribution of values about the Mean value. Depending on where the tail is elongated and the mass of the distribution is concentrated, this value can be positive or negative. Related links: https://en.wikipedia.org/wiki/Skewness In case of a flat region, the standard deviation and 4rd central moment will be both 0. In this case, a value of 0 is returned.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="kurtosis" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Kurtosis is a measure of the ‘peakedness’ of the distribution of values in the image ROI. A higher kurtosis implies that the mass of the distribution is concentrated towards the tail(s) rather than towards the mean. A lower kurtosis implies the reverse: that the mass of the distribution is concentrated towards a spike near the Mean value. Related links: https://en.wikipedia.org/wiki/Kurtosis In case of a flat region, the standard deviation and 4rd central moment will be both 0. In this case, a value of 0 is returned.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="variance" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Variance is the the mean of the squared distances of each intensity value from the Mean value. This is a measure of the spread of the distribution about the mean.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="uniformity" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Uniformity is a measure of the sum of the squares of each intensity value. This is a measure of the heterogeneity of the image array, where a greater uniformity implies a greater heterogeneity or a greater range of discrete intensity values. Defined by IBSI as Intensity Histogram Uniformity.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-							</xs:sequence>
-						</xs:complexType>
-					</xs:element>
-					<xs:element name="shape" minOccurs="0" maxOccurs="1">
-						<xs:complexType>
-							<xs:sequence>
-								<xs:element name="volume" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>The volume of the ROI is approximated by multiplying the number of voxels in the ROI by the volume of a single voxel.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="surfaceArea" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Surface Area is an approximation of the surface of the ROI in mm2, calculated using a marching cubes algorithm.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="surfaceVolumeRatio" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Here, a lower value indicates a more compact (sphere-like) shape. This feature is not dimensionless, and is therefore (partly) dependent on the volume of the ROI.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="sphericity" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Sphericity is a measure of the roundness of the shape of the tumor region relative to a sphere. It is a dimensionless measure, independent of scale and orientation. The value range is greater than 0 and less than or equal to 1, where a value of 1 indicates a perfect sphere (a sphere has the smallest possible surface area for a given volume, compared to other solids).
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="compactness1" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Similar to Sphericity, Compactness 1 is a measure of how compact the shape of the tumor is relative to a sphere (most compact). It is therefore correlated to Sphericity and redundant.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="compactness2" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Similar to Sphericity and Compactness 1, Compactness 2 is a measure of how compact the shape of the tumor is relative to a sphere (most compact). It is a dimensionless measure, independent of scale and orientation.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="sphericalDisproportion" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Spherical Disproportion is the ratio of the surface area of the tumor region to the surface area of a sphere with the same volume as the tumor region, and by definition, the inverse of Sphericity. Therefore, the value range is spherical disproportion greater than or equal to 1, with a value of 1 indicating a perfect sphere.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="maximum3DDiameter" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Maximum 3D diameter is defined as the largest pairwise Euclidean distance between surface voxels in the ROI. Also known as Feret Diameter.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="maximum2DDiameterSlice" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Maximum 2D diameter (Slice) is defined as the largest pairwise Euclidean distance between tumor surface voxels in the row-column (generally the axial) plane.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="maximum2DDiameterColumn" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Maximum 2D diameter (Column) is defined as the largest pairwise Euclidean distance between tumor surface voxels in the row-slice (usually the coronal) plane.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="maximum2DDiameterRow" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Maximum 2D diameter (Row) is defined as the largest pairwise Euclidean distance between tumor surface voxels in the column-slice (usually the sagittal) plane.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="majorAxis" type="xs:double" minOccurs="0" maxOccurs="1">
-								</xs:element>
-								<xs:element name="minorAxis" type="xs:double" minOccurs="0" maxOccurs="1">
-								</xs:element>
-								<xs:element name="leastAxis" type="xs:double" minOccurs="0" maxOccurs="1">
-								</xs:element>
-								<xs:element name="elongation" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Elongation is calculated using its implementation in SimpleITK. The values range between 1 (where the cross section through the first and second largest principal moments is circle-like (non-elongated)) and 0 (where the object is a single point or 1 dimensional line).
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="flatness" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Flatness is calculated using its implementation in SimpleITK. The values range between 1 (non-flat, sphere-like) and 0 (a flat object).
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-							</xs:sequence>
-						</xs:complexType>
-					</xs:element>
-					<xs:element name="glcm" minOccurs="0" maxOccurs="1">
-						<xs:complexType>
-							<xs:sequence>
-								<xs:element name="autocorrelation" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Autocorrelation is a measure of the magnitude of the fineness and coarseness of texture.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="jointAverage" type="xs:double" minOccurs="0" maxOccurs="1">
-								</xs:element>
-								<xs:element name="clusterProminence" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Cluster Prominence is a measure of the skewness and asymmetry of the GLCM. A higher values implies more asymmetry about the mean while a lower value indicates a peak near the mean value and less variation about the mean.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="clusterShade" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Cluster Shade is a measure of the skewness and uniformity of the GLCM. A higher cluster shade implies greater asymmetry about the mean.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="clusterTendency" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Cluster Tendency is a measure of groupings of voxels with similar gray-level values.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="contrast" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Contrast is a measure of the local intensity variation, favoring values away from the diagonal. A larger value correlates with a greater disparity in intensity values among neighboring voxels.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="correlation" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Correlation is a value between 0 (uncorrelated) and 1 (perfectly correlated) showing the linear dependency of gray level values to their respective voxels in the GLCM.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="differenceAverage" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Difference Average measures the relationship between occurrences of pairs with similar intensity values and occurrences of pairs with differing intensity values.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="differenceEntropy" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Difference Entropy is a measure of the randomness/variability in neighborhood intensity value differences.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="differenceVariance" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Difference Variance is a measure of heterogeneity that places higher weights on differing intensity level pairs that deviate more from the mean.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="jointEnergy" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Energy is a measure of homogeneous patterns in the image. A greater Energy implies that there are more instances of intensity value pairs in the image that neighbor each other at higher frequencies. Defined by IBSI as Angular Second Moment.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="jointEntropy" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Joint entropy is a measure of the randomness/variability in neighborhood intensity values. Defined by IBSI as Joint entropy.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="imc1" type="xs:double" minOccurs="0" maxOccurs="1">
-								</xs:element>
-								<xs:element name="imc2" type="xs:double" minOccurs="0" maxOccurs="1">
-								</xs:element>
-								<xs:element name="idm" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>IDM (a.k.a Homogeneity 2) is a measure of the local homogeneity of an image. IDM weights are the inverse of the Contrast weights (decreasing exponentially from the diagonal in the GLCM).
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="idmn" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>IDMN (inverse difference moment normalized) is a measure of the local homogeneity of an image. IDMN weights are the inverse of the Contrast weights (decreasing exponentially from the diagonal in the GLCM). Unlike Homogeneity2, IDMN normalizes the square of the difference between neighboring intensity values by dividing over the square of the total number of discrete intensity values.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="id" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>ID (a.k.a. Homogeneity 1) is another measure of the local homogeneity of an image. With more uniform gray levels, the denominator will remain low, resulting in a higher overall value.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="idn" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>IDN (inverse difference normalized) is another measure of the local homogeneity of an image. Unlike Homogeneity1, IDN normalizes the difference between the neighboring intensity values by dividing over the total number of discrete intensity values.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="inverseVariance" type="xs:double" minOccurs="0" maxOccurs="1">
-								</xs:element>
-								<xs:element name="maximumProbability" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Maximum Probability is occurrences of the most predominant pair of neighboring intensity values. Defined by IBSI as Joint maximum.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="sumAverage" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Sum Average measures the relationship between occurrences of pairs with lower intensity values and occurrences of pairs with higher intensity values.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="sumEntropy" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Sum Entropy is a sum of neighborhood intensity value differences.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="sumSquares" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Sum of Squares or Variance is a measure in the distribution of neigboring intensity level pairs about the mean intensity level in the GLCM. Defined by IBSI as Joint Variance.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="smallAreaEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>SAE is a measure of the distribution of small size zones, with a greater value indicative of more smaller size zones and more fine textures.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="largeAreaEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>LAE is a measure of the distribution of large area size zones, with a greater value indicative of more larger size zones and more coarse textures.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="grayLevelNonUniformity" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>GLN measures the variability of gray-level intensity values in the image, with a lower value indicating more homogeneity in intensity values.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="grayLevelNonUniformityNormalized" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>GLNN measures the variability of gray-level intensity values in the image, with a lower value indicating a greater similarity in intensity values. This is the normalized version of the GLN formula.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="sizeZoneNonUniformity" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>SZN measures the variability of size zone volumes in the image, with a lower value indicating more homogeneity in size zone volumes.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="sizeZoneNonUniformityNormalized" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>SZNN measures the variability of size zone volumes throughout the image, with a lower value indicating more homogeneity among zone size volumes in the image. This is the normalized version of the SZN formula.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="zonePercentage" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>ZP measures the coarseness of the texture by taking the ratio of number of zones and number of voxels in the ROI.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="grayLevelVariance" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>GLV measures the variance in gray level intensities for the zones.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="zoneVariance" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>ZV measures the variance in zone size volumes for the zones.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="zoneEntropy" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>ZE measures the uncertainty/randomness in the distribution of zone sizes and gray levels. A higher value indicates more heterogeneneity in the texture patterns.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="lowGrayLevelZoneEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>LGLZE measures the distribution of lower gray-level size zones, with a higher value indicating a greater proportion of lower gray-level values and size zones in the image.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="highGrayLevelZoneEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>HGLZE measures the distribution of the higher gray-level values, with a higher value indicating a greater proportion of higher gray-level values and size zones in the image.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="smallAreaLowGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>SALGLE measures the proportion in the image of the joint distribution of smaller size zones with lower gray-level values.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="smallAreaHighGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>SAHGLE measures the proportion in the image of the joint distribution of smaller size zones with higher gray-level values.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="largeAreaLowGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>LALGLE measures the proportion in the image of the joint distribution of larger size zones with lower gray-level values.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="largeAreaHighGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>LAHGLE measures the proportion in the image of the joint distribution of larger size zones with higher gray-level values.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-							</xs:sequence>
-						</xs:complexType>
-					</xs:element>
-					<xs:element name="glrlm" minOccurs="0" maxOccurs="1">
-						<xs:complexType>
-							<xs:sequence>
-								<xs:element name="shortRunEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>SRE is a measure of the distribution of short run lengths, with a greater value indicative of shorter run lengths and more fine textural textures.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="longRunEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>LRE is a measure of the distribution of long run lengths, with a greater value indicative of longer run lengths and more coarse structural textures.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="grayLevelNonUniformity" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>GLN measures the similarity of gray-level intensity values in the image, where a lower GLN value correlates with a greater similarity in intensity values.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="grayLevelNonUniformityNormalized" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>GLNN measures the similarity of gray-level intensity values in the image, where a lower GLNN value correlates with a greater similarity in intensity values. This is the normalized version of the GLN formula.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="runLengthNonUniformity" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>RLN measures the similarity of run lengths throughout the image, with a lower value indicating more homogeneity among run lengths in the image.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="runLengthNonUniformityNormalized" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>RLNN measures the similarity of run lengths throughout the image, with a lower value indicating more homogeneity among run lengths in the image. This is the normalized version of the RLN formula.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="runPercentage" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>RP measures the coarseness of the texture by taking the ratio of number of runs and number of voxels in the ROI.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="grayLevelVariance" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>GLV measures the variance in gray level intensity for the runs.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="runVariance" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>RV is a measure of the variance in runs for the run lengths.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="runEntropy" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>RE measures the uncertainty/randomness in the distribution of run lengths and gray levels. A higher value indicates more heterogeneity in the texture patterns.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="lowGrayLevelRunEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>LGLRE measures the distribution of low gray-level values, with a higher value indicating a greater concentration of low gray-level values in the image.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="highGrayLevelRunEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>HGLRE measures the distribution of the higher gray-level values, with a higher value indicating a greater concentration of high gray-level values in the image.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="shortRunLowGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>SRLGLE measures the joint distribution of shorter run lengths with lower gray-level values.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="shortRunHighGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>SRHGLE measures the joint distribution of shorter run lengths with higher gray-level values.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="longRunLowGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>LRLGLRE measures the joint distribution of long run lengths with lower gray-level values.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="longRunHighGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>LRHGLRE measures the joint distribution of long run lengths with higher gray-level values.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-							</xs:sequence>
-						</xs:complexType>
-					</xs:element>
-					<xs:element name="ngtdm" minOccurs="0" maxOccurs="1">
-						<xs:complexType>
-							<xs:sequence>
-								<xs:element name="coarseness" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Coarseness is a measure of average difference between the center voxel and its neighbourhood and is an indication of the spatial rate of change. A higher value indicates a lower spatial change rate and a locally more uniform texture.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="contrast" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Contrast is a measure of the spatial intensity change, but is also dependent on the overall gray level dynamic range. Contrast is high when both the dynamic range and the spatial change rate are high, i.e. an image with a large range of gray levels, with large changes between voxels and their neighbourhood.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="busyness" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>A measure of the change from a pixel to its neighbour. A high value for busyness indicates a ‘busy’ image, with rapid changes of intensity between pixels and its neighbourhood.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="complexity" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>An image is considered complex when there are many primitive components in the image, i.e. the image is non-uniform and there are many rapid changes in gray level intensity.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="strength" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Strenght is a measure of the primitives in an image. Its value is high when the primitives are easily defined and visible, i.e. an image with slow change in intensity but more large coarse differences in gray level intensities.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-							</xs:sequence>
-						</xs:complexType>
-					</xs:element>
-					<xs:element name="gldm" minOccurs="0" maxOccurs="1">
-						<xs:complexType>
-							<xs:sequence>
-								<xs:element name="smallDependenceEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>A measure of the distribution of small dependencies, with a greater value indicative of smaller dependence and less homogeneous textures.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="largeDependenceEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>A measure of the distribution of large dependencies, with a greater value indicative of larger dependence and more homogeneous textures.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="grayLevelNonUniformity" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Measures the similarity of gray-level intensity values in the image, where a lower GLN value correlates with a greater similarity in intensity values.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="dependenceNonUniformity" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Measures the similarity of dependence throughout the image, with a lower value indicating more homogeneity among dependencies in the image.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="dependenceNonUniformityNormalized" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Measures the similarity of dependence throughout the image, with a lower value indicating more homogeneity among dependencies in the image. This is the normalized version of the DLN formula.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="grayLevelVariance" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Measures the variance in grey level in the image.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="dependenceVariance" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Measures the variance in dependence size in the image.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="dependenceEntropy" type="xs:double" minOccurs="0" maxOccurs="1">
-								</xs:element>
-								<xs:element name="lowGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Measures the distribution of low gray-level values, with a higher value indicating a greater concentration of low gray-level values in the image.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="highGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Measures the distribution of the higher gray-level values, with a higher value indicating a greater concentration of high gray-level values in the image.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="smallDependenceLowGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Measures the joint distribution of small dependence with lower gray-level values.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="smallDependenceHighGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Measures the joint distribution of small dependence with higher gray-level values.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="largeDependenceLowGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Measures the joint distribution of large dependence with lower gray-level values.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="largeDependenceHighGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
-									<xs:annotation>
-										<xs:documentation>Measures the joint distribution of large dependence with higher gray-level values.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-							</xs:sequence>
-						</xs:complexType>
-					</xs:element>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+        <xs:complexContent>
+            <xs:extension base="xnat:imageAssessorData">
+                <xs:sequence>
+                    <xs:element name="generalInfo" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="scanId" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="maskFile" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="label" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="filter" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="boundingBox" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="centerOfMassIndex" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="centerOfMass" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="enabledImageTypes" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="generalSettings" minOccurs="0" maxOccurs="1">
+                                    <xs:simpleType>
+                                        <xs:restriction base="xs:string">
+                                            <xs:maxLength value="10000"/>
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="imageHash" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="imageSpacing" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="maskHash" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="numpyVersion" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="pyWaveletVersion" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="simpleITKVersion" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="pyradiomicsVersion" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="volumeNum" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+                                <xs:element name="voxelNum" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="firstorder" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="energy" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Energy is a measure of the magnitude of voxel values in an image. A larger values implies a greater sum of the squares of these values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="totalEnergy" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Total Energy is the value of Energy feature scaled by the volume of the voxel in cubic mm. Not present in IBSI feature definitions.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="entropy" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Entropy specifies the uncertainty/randomness in the image values. It measures the average amount of information required to encode the image values. Defined by IBSI as Intensity Histogram Entropy.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="minimum" type="xs:double" minOccurs="0" maxOccurs="1"></xs:element>
+                                <xs:element name="tenPercentile" type="xs:double" minOccurs="0" maxOccurs="1"></xs:element>
+                                <xs:element name="ninetyPercentile" type="xs:double" minOccurs="0" maxOccurs="1"></xs:element>
+                                <xs:element name="maximum" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>The maximum gray level intensity within the ROI.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="mean" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>The average gray level intensity within the ROI.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="median" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>The median gray level intensity within the ROI.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="interquartileRange" type="xs:double" minOccurs="0" maxOccurs="1"></xs:element>
+                                <xs:element name="range" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>The range of gray values in the ROI.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="meanAbsoluteDeviation" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Mean Absolute Deviation is the mean distance of all intensity values from the Mean Value of the image array.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="robustMeanAbsoluteDeviation" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Robust Mean Absolute Deviation is the mean distance of all intensity values from the Mean Value calculated on the subset of image array with gray levels in between, or equal to the 10th and 90th percentile.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="rootMeanSquared" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>RMS is the square-root of the mean of all the squared intensity values. It is another measure of the magnitude of the image values. This feature is volume-confounded, a larger value of c increases the effect of volume-confounding.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="standardDeviation" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Standard Deviation measures the amount of variation or dispersion from the Mean Value.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="skewness" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Skewness measures the asymmetry of the distribution of values about the Mean value. Depending on where the tail is elongated and the mass of the distribution is concentrated, this value can be positive or negative. Related links: https://en.wikipedia.org/wiki/Skewness In case of a flat region, the standard deviation and 4rd central moment will be both 0. In this case, a value of 0 is returned.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="kurtosis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Kurtosis is a measure of the ‘peakedness’ of the distribution of values in the image ROI. A higher kurtosis implies that the mass of the distribution is concentrated towards the tail(s) rather than towards the mean. A lower kurtosis implies the reverse: that the mass of the distribution is concentrated towards a spike near the Mean value. Related links: https://en.wikipedia.org/wiki/Kurtosis In case of a flat region, the standard deviation and 4rd central moment will be both 0. In this case, a value of 0 is returned.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="variance" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Variance is the the mean of the squared distances of each intensity value from the Mean value. This is a measure of the spread of the distribution about the mean.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="uniformity" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Uniformity is a measure of the sum of the squares of each intensity value. This is a measure of the heterogeneity of the image array, where a greater uniformity implies a greater heterogeneity or a greater range of discrete intensity values. Defined by IBSI as Intensity Histogram Uniformity.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="shape" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="volume" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>The volume of the ROI is approximated by multiplying the number of voxels in the ROI by the volume of a single voxel.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="surfaceArea" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Surface Area is an approximation of the surface of the ROI in mm2, calculated using a marching cubes algorithm.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="surfaceVolumeRatio" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Here, a lower value indicates a more compact (sphere-like) shape. This feature is not dimensionless, and is therefore (partly) dependent on the volume of the ROI.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="sphericity" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Sphericity is a measure of the roundness of the shape of the tumor region relative to a sphere. It is a dimensionless measure, independent of scale and orientation. The value range is greater than 0 and less than or equal to 1, where a value of 1 indicates a perfect sphere (a sphere has the smallest possible surface area for a given volume, compared to other solids).</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="compactness1" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Similar to Sphericity, Compactness 1 is a measure of how compact the shape of the tumor is relative to a sphere (most compact). It is therefore correlated to Sphericity and redundant.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="compactness2" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Similar to Sphericity and Compactness 1, Compactness 2 is a measure of how compact the shape of the tumor is relative to a sphere (most compact). It is a dimensionless measure, independent of scale and orientation.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="sphericalDisproportion" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Spherical Disproportion is the ratio of the surface area of the tumor region to the surface area of a sphere with the same volume as the tumor region, and by definition, the inverse of Sphericity. Therefore, the value range is spherical disproportion greater than or equal to 1, with a value of 1 indicating a perfect sphere.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="maximum3DDiameter" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Maximum 3D diameter is defined as the largest pairwise Euclidean distance between surface voxels in the ROI. Also known as Feret Diameter.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="maximum2DDiameterSlice" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Maximum 2D diameter (Slice) is defined as the largest pairwise Euclidean distance between tumor surface voxels in the row-column (generally the axial) plane.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="maximum2DDiameterColumn" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Maximum 2D diameter (Column) is defined as the largest pairwise Euclidean distance between tumor surface voxels in the row-slice (usually the coronal) plane.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="maximum2DDiameterRow" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Maximum 2D diameter (Row) is defined as the largest pairwise Euclidean distance between tumor surface voxels in the column-slice (usually the sagittal) plane.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="majorAxis" type="xs:double" minOccurs="0" maxOccurs="1"></xs:element>
+                                <xs:element name="minorAxis" type="xs:double" minOccurs="0" maxOccurs="1"></xs:element>
+                                <xs:element name="leastAxis" type="xs:double" minOccurs="0" maxOccurs="1"></xs:element>
+                                <xs:element name="elongation" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Elongation is calculated using its implementation in SimpleITK. The values range between 1 (where the cross section through the first and second largest principal moments is circle-like (non-elongated)) and 0 (where the object is a single point or 1 dimensional line).</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="flatness" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Flatness is calculated using its implementation in SimpleITK. The values range between 1 (non-flat, sphere-like) and 0 (a flat object).</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="glcm" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="autocorrelation" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Autocorrelation is a measure of the magnitude of the fineness and coarseness of texture.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="jointAverage" type="xs:double" minOccurs="0" maxOccurs="1"></xs:element>
+                                <xs:element name="clusterProminence" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Cluster Prominence is a measure of the skewness and asymmetry of the GLCM. A higher values implies more asymmetry about the mean while a lower value indicates a peak near the mean value and less variation about the mean.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="clusterShade" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Cluster Shade is a measure of the skewness and uniformity of the GLCM. A higher cluster shade implies greater asymmetry about the mean.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="clusterTendency" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Cluster Tendency is a measure of groupings of voxels with similar gray-level values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="contrast" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Contrast is a measure of the local intensity variation, favoring values away from the diagonal. A larger value correlates with a greater disparity in intensity values among neighboring voxels.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="correlation" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Correlation is a value between 0 (uncorrelated) and 1 (perfectly correlated) showing the linear dependency of gray level values to their respective voxels in the GLCM.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="differenceAverage" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Difference Average measures the relationship between occurrences of pairs with similar intensity values and occurrences of pairs with differing intensity values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="differenceEntropy" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Difference Entropy is a measure of the randomness/variability in neighborhood intensity value differences.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="differenceVariance" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Difference Variance is a measure of heterogeneity that places higher weights on differing intensity level pairs that deviate more from the mean.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="jointEnergy" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Energy is a measure of homogeneous patterns in the image. A greater Energy implies that there are more instances of intensity value pairs in the image that neighbor each other at higher frequencies. Defined by IBSI as Angular Second Moment.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="jointEntropy" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Joint entropy is a measure of the randomness/variability in neighborhood intensity values. Defined by IBSI as Joint entropy.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="imc1" type="xs:double" minOccurs="0" maxOccurs="1"></xs:element>
+                                <xs:element name="imc2" type="xs:double" minOccurs="0" maxOccurs="1"></xs:element>
+                                <xs:element name="idm" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>IDM (a.k.a Homogeneity 2) is a measure of the local homogeneity of an image. IDM weights are the inverse of the Contrast weights (decreasing exponentially from the diagonal in the GLCM).</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="idmn" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>IDMN (inverse difference moment normalized) is a measure of the local homogeneity of an image. IDMN weights are the inverse of the Contrast weights (decreasing exponentially from the diagonal in the GLCM). Unlike Homogeneity2, IDMN normalizes the square of the difference between neighboring intensity values by dividing over the square of the total number of discrete intensity values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="id" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>ID (a.k.a. Homogeneity 1) is another measure of the local homogeneity of an image. With more uniform gray levels, the denominator will remain low, resulting in a higher overall value.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="idn" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>IDN (inverse difference normalized) is another measure of the local homogeneity of an image. Unlike Homogeneity1, IDN normalizes the difference between the neighboring intensity values by dividing over the total number of discrete intensity values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="inverseVariance" type="xs:double" minOccurs="0" maxOccurs="1"></xs:element>
+                                <xs:element name="maximumProbability" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Maximum Probability is occurrences of the most predominant pair of neighboring intensity values. Defined by IBSI as Joint maximum.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="sumAverage" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Sum Average measures the relationship between occurrences of pairs with lower intensity values and occurrences of pairs with higher intensity values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="sumEntropy" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Sum Entropy is a sum of neighborhood intensity value differences.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="sumSquares" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Sum of Squares or Variance is a measure in the distribution of neigboring intensity level pairs about the mean intensity level in the GLCM. Defined by IBSI as Joint Variance.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="smallAreaEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>SAE is a measure of the distribution of small size zones, with a greater value indicative of more smaller size zones and more fine textures.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="largeAreaEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>LAE is a measure of the distribution of large area size zones, with a greater value indicative of more larger size zones and more coarse textures.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="grayLevelNonUniformity" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>GLN measures the variability of gray-level intensity values in the image, with a lower value indicating more homogeneity in intensity values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="grayLevelNonUniformityNormalized" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>GLNN measures the variability of gray-level intensity values in the image, with a lower value indicating a greater similarity in intensity values. This is the normalized version of the GLN formula.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="sizeZoneNonUniformity" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>SZN measures the variability of size zone volumes in the image, with a lower value indicating more homogeneity in size zone volumes.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="sizeZoneNonUniformityNormalized" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>SZNN measures the variability of size zone volumes throughout the image, with a lower value indicating more homogeneity among zone size volumes in the image. This is the normalized version of the SZN formula.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="zonePercentage" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>ZP measures the coarseness of the texture by taking the ratio of number of zones and number of voxels in the ROI.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="grayLevelVariance" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>GLV measures the variance in gray level intensities for the zones.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="zoneVariance" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>ZV measures the variance in zone size volumes for the zones.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="zoneEntropy" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>ZE measures the uncertainty/randomness in the distribution of zone sizes and gray levels. A higher value indicates more heterogeneneity in the texture patterns.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="lowGrayLevelZoneEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>LGLZE measures the distribution of lower gray-level size zones, with a higher value indicating a greater proportion of lower gray-level values and size zones in the image.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="highGrayLevelZoneEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>HGLZE measures the distribution of the higher gray-level values, with a higher value indicating a greater proportion of higher gray-level values and size zones in the image.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="smallAreaLowGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>SALGLE measures the proportion in the image of the joint distribution of smaller size zones with lower gray-level values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="smallAreaHighGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>SAHGLE measures the proportion in the image of the joint distribution of smaller size zones with higher gray-level values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="largeAreaLowGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>LALGLE measures the proportion in the image of the joint distribution of larger size zones with lower gray-level values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="largeAreaHighGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>LAHGLE measures the proportion in the image of the joint distribution of larger size zones with higher gray-level values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="glrlm" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="shortRunEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>SRE is a measure of the distribution of short run lengths, with a greater value indicative of shorter run lengths and more fine textural textures.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="longRunEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>LRE is a measure of the distribution of long run lengths, with a greater value indicative of longer run lengths and more coarse structural textures.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="grayLevelNonUniformity" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>GLN measures the similarity of gray-level intensity values in the image, where a lower GLN value correlates with a greater similarity in intensity values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="grayLevelNonUniformityNormalized" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>GLNN measures the similarity of gray-level intensity values in the image, where a lower GLNN value correlates with a greater similarity in intensity values. This is the normalized version of the GLN formula.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="runLengthNonUniformity" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>RLN measures the similarity of run lengths throughout the image, with a lower value indicating more homogeneity among run lengths in the image.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="runLengthNonUniformityNormalized" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>RLNN measures the similarity of run lengths throughout the image, with a lower value indicating more homogeneity among run lengths in the image. This is the normalized version of the RLN formula.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="runPercentage" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>RP measures the coarseness of the texture by taking the ratio of number of runs and number of voxels in the ROI.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="grayLevelVariance" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>GLV measures the variance in gray level intensity for the runs.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="runVariance" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>RV is a measure of the variance in runs for the run lengths.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="runEntropy" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>RE measures the uncertainty/randomness in the distribution of run lengths and gray levels. A higher value indicates more heterogeneity in the texture patterns.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="lowGrayLevelRunEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>LGLRE measures the distribution of low gray-level values, with a higher value indicating a greater concentration of low gray-level values in the image.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="highGrayLevelRunEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>HGLRE measures the distribution of the higher gray-level values, with a higher value indicating a greater concentration of high gray-level values in the image.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="shortRunLowGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>SRLGLE measures the joint distribution of shorter run lengths with lower gray-level values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="shortRunHighGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>SRHGLE measures the joint distribution of shorter run lengths with higher gray-level values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="longRunLowGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>LRLGLRE measures the joint distribution of long run lengths with lower gray-level values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="longRunHighGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>LRHGLRE measures the joint distribution of long run lengths with higher gray-level values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="ngtdm" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="coarseness" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Coarseness is a measure of average difference between the center voxel and its neighbourhood and is an indication of the spatial rate of change. A higher value indicates a lower spatial change rate and a locally more uniform texture.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="contrast" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Contrast is a measure of the spatial intensity change, but is also dependent on the overall gray level dynamic range. Contrast is high when both the dynamic range and the spatial change rate are high, i.e. an image with a large range of gray levels, with large changes between voxels and their neighbourhood.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="busyness" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>A measure of the change from a pixel to its neighbour. A high value for busyness indicates a ‘busy’ image, with rapid changes of intensity between pixels and its neighbourhood.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="complexity" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>An image is considered complex when there are many primitive components in the image, i.e. the image is non-uniform and there are many rapid changes in gray level intensity.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="strength" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Strength is a measure of the primitives in an image. Its value is high when the primitives are easily defined and visible, i.e. an image with slow change in intensity but more large coarse differences in gray level intensities.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="gldm" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="smallDependenceEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>A measure of the distribution of small dependencies, with a greater value indicative of smaller dependence and less homogeneous textures.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="largeDependenceEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>A measure of the distribution of large dependencies, with a greater value indicative of larger dependence and more homogeneous textures.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="grayLevelNonUniformity" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Measures the similarity of gray-level intensity values in the image, where a lower GLN value correlates with a greater similarity in intensity values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="dependenceNonUniformity" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Measures the similarity of dependence throughout the image, with a lower value indicating more homogeneity among dependencies in the image.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="dependenceNonUniformityNormalized" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Measures the similarity of dependence throughout the image, with a lower value indicating more homogeneity among dependencies in the image. This is the normalized version of the DLN formula.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="grayLevelVariance" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Measures the variance in grey level in the image.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="dependenceVariance" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Measures the variance in dependence size in the image.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="dependenceEntropy" type="xs:double" minOccurs="0" maxOccurs="1"></xs:element>
+                                <xs:element name="lowGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Measures the distribution of low gray-level values, with a higher value indicating a greater concentration of low gray-level values in the image.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="highGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Measures the distribution of the higher gray-level values, with a higher value indicating a greater concentration of high gray-level values in the image.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="smallDependenceLowGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Measures the joint distribution of small dependence with lower gray-level values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="smallDependenceHighGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Measures the joint distribution of small dependence with higher gray-level values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="largeDependenceLowGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Measures the joint distribution of large dependence with lower gray-level values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="largeDependenceHighGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Measures the joint distribution of large dependence with higher gray-level values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="glszm" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="grayLevelNonUniformity" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Gray Level Non-Uniformity (GLN) measures the variability of gray-level intensity values in the image, with a lower value indicating more homogeneity in intensity values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="grayLevelNonUniformityNormalized" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Gray Level Non-Uniformity Normalized (GLNN) measures the variability of gray-level intensity values in the image, with a lower value indicating a greater similarity in intensity values. This is the normalized version of the GLN formula.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="grayLevelVariance" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Gray Level Variance (GLV) measures the variance in gray level intensities for the zones.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="largeAreaEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Large Area Emphasis (LAE) is a measure of the distribution of large area size zones, with a greater value indicative of more larger size zones and more coarse textures.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="largeAreaHighGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Large Area High Gray Level Emphasis (LAHGLE) measures the proportion in the image of the joint distribution of larger size zones with higher gray-level values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="largeAreaLowGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Large Area Low Gray Level Emphasis (LALGLE) measures the proportion in the image of the joint distribution of larger size zones with lower gray-level values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="lowGrayLevelZoneEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Low Gray Level Zone Emphasis (LGLZE) measures the distribution of lower gray-level size zones, with a higher value indicating a greater proportion of lower gray-level values and size zones in the image.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="highGrayLevelZoneEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>High Gray Level Zone Emphasis (HGLZE) measures the distribution of the higher gray-level values, with a higher value indicating a greater proportion of higher gray-level values and size zones in the image.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="sizeZoneNonUniformity" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Size-Zone Non-Uniformity (SZN) measures the variability of size zone volumes in the image, with a lower value indicating more homogeneity in size zone volumes.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="sizeZoneNonUniformityNormalized" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Size-Zone Non-Uniformity Normalized (SZNN) measures the variability of size zone volumes throughout the image, with a lower value indicating more homogeneity among zone size volumes in the image. This is the normalized version of the SZN formula.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="smallAreaEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Small Area Emphasis (SAE) is a measure of the distribution of small size zones, with a greater value indicative of more smaller size zones and more fine textures.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="smallAreaHighGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Small Area High Gray Level Emphasis (SAHGLE) measures the proportion in the image of the joint distribution of smaller size zones with higher gray-level values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="smallAreaLowGrayLevelEmphasis" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Small Area Low Gray Level Emphasis (SALGLE) measures the proportion in the image of the joint distribution of smaller size zones with lower gray-level values.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="zonePercentage" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Zone Percentage (ZP) measures the coarseness of the texture by taking the ratio of number of zones and number of voxels in the ROI.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="zoneVariance" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Zone Variance (ZV) measures the variance in zone size volumes for the zones.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="zoneEntropy" type="xs:double" minOccurs="0" maxOccurs="1">
+                                    <xs:annotation>
+                                        <xs:documentation>Zone Entropy (ZE) measures the uncertainty/randomness in the distribution of zone sizes and gray levels. A higher value indicates more heterogeneneity in the texture patterns.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
     </xs:complexType>
 </xs:schema>
