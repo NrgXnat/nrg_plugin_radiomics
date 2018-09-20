@@ -9,7 +9,7 @@
 
 def groupName = 'org.nrg.xnat.plugin'
 def artifactName = 'radiomics'
-def pluginVersion = '1.1.1'
+def pluginVersion = '1.1.2-SNAPSHOT'
 
 group groupName
 version pluginVersion
