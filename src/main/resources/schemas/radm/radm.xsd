@@ -17,7 +17,15 @@
                                 <xs:element name="versions_SimpleITK" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
                                 <xs:element name="versions_PyWavelet" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
                                 <xs:element name="versions_Python" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
-                                <xs:element name="configuration_Settings" type="xs:string" minOccurs="0" maxOccurs="1" maxLenth="1000"></xs:element>
+                                <xs:element name="configuration_Settings" minOccurs="0" maxOccurs="1">
+                                    <xs:simpleType>
+                                        <xs:restriction base="xs:string">
+                                            <xs:minLength value="0"/>
+                                            <xs:maxLength value="1000"/>
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                </xs:element>
+                                
                                 <xs:element name="configuration_EnabledImageTypes" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
                                 <xs:element name="imageOriginal_Hash" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
                                 <xs:element name="imageOriginal_Spacing" type="xs:string" minOccurs="0" maxOccurs="1"></xs:element>
